@@ -1,26 +1,14 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import {
-  Zap, MessageCircle, Sparkles, ArrowUpRight, Github, Star,
+  Zap, MessageCircle, Sparkles, ArrowUpRight,
   Send, AtSign, Clapperboard, Brain, Inbox, Lock, Terminal,
-  Loader2,
 } from "lucide-react"
 
-const TELEGRAM_URL = "https://t.me/instagramautomationp8"
-const GITHUB_URL = "https://github.com/ayuuxh2/insta-p8"
-
 export function LandingPage() {
-  const [stars, setStars] = useState<number | null>(null)
   const router = useRouter()
-
-  useEffect(() => {
-    fetch("https://api.github.com/repos/ayuuxh2/insta-p8")
-      .then(r => r.json())
-      .then(d => { if (typeof d.stargazers_count === "number") setStars(d.stargazers_count) })
-      .catch(() => {})
-  }, [])
 
   const handleLogin = () => {
     window.location.href = `https://www.instagram.com/oauth/authorize?force_reauth=true&client_id=${process.env.NEXT_PUBLIC_INSTAGRAM_APP_ID}&redirect_uri=${process.env.NEXT_PUBLIC_INSTAGRAM_REDIRECT_URI}&response_type=code&scope=instagram_business_basic%2Cinstagram_business_manage_messages%2Cinstagram_business_manage_comments%2Cinstagram_business_content_publish%2Cinstagram_business_manage_insights`
@@ -56,18 +44,9 @@ export function LandingPage() {
           <div className="w-7 h-7 bg-[#ffe14d] text-black flex items-center justify-center rounded-[6px]">
             <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
           </div>
-          <span className="font-mono-ui text-sm font-bold tracking-tight">insta-p8</span>
-          <span className="hidden sm:inline-block font-mono-ui text-[10px] text-neutral-500 border border-white/10 rounded-full px-2 py-0.5">open source</span>
+          <span className="font-mono-ui text-sm font-bold tracking-tight">Automation Guru</span>
         </div>
         <div className="flex items-center gap-2">
-          <a
-            href={GITHUB_URL} target="_blank" rel="noreferrer"
-            className="flex items-center gap-1.5 font-mono-ui text-xs text-neutral-400 hover:text-white border border-white/10 hover:border-white/30 rounded-full px-3.5 py-1.5 transition-colors"
-          >
-            <Github className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">Star</span>
-            {stars !== null && <span className="text-[#ffe14d]">{stars}</span>}
-          </a>
           {process.env.NODE_ENV === "development" && (
             <button
               onClick={handleTestLogin}
@@ -177,29 +156,22 @@ export function LandingPage() {
           </div>
         </section>
 
-        {/* Community strip */}
+        {/* CTA strip */}
         <section className="px-5 md:px-10 pb-24 max-w-6xl mx-auto">
           <div className="border border-white/[0.08] rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8 bg-gradient-to-br from-white/[0.03] to-transparent">
             <div>
-              <h3 className="font-serif-display text-3xl md:text-4xl mb-2">Built in the open.</h3>
+              <h3 className="font-serif-display text-3xl md:text-4xl mb-2">Ready to automate?</h3>
               <p className="text-neutral-500 text-sm max-w-md">
-                Stars, sponsors, and testers keep this project alive. Questions, bugs, feature requests —
-                the Telegram chat is where it all happens.
+                Connect your Instagram account and start automating your DMs, comments, and stories in minutes.
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={TELEGRAM_URL} target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 bg-[#2AABEE] text-white font-mono-ui text-xs font-bold px-5 py-3 rounded-full hover:brightness-110 transition-all"
+              <button
+                onClick={handleLogin}
+                className="flex items-center gap-2 bg-[#ffe14d] text-black font-mono-ui text-xs font-bold px-5 py-3 rounded-full hover:brightness-110 transition-all"
               >
-                <Send className="w-3.5 h-3.5" /> Join Telegram
-              </a>
-              <a
-                href={GITHUB_URL} target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 border border-white/15 text-neutral-300 font-mono-ui text-xs font-bold px-5 py-3 rounded-full hover:border-white/40 transition-colors"
-              >
-                <Star className="w-3.5 h-3.5 text-[#ffe14d]" /> Star on GitHub
-              </a>
+                <Zap className="w-3.5 h-3.5" /> Connect Instagram
+              </button>
             </div>
           </div>
         </section>
@@ -208,12 +180,11 @@ export function LandingPage() {
       {/* Footer */}
       <footer className="border-t border-white/[0.08] px-5 md:px-10 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <span className="font-mono-ui text-[11px] text-neutral-600">
-          insta-p8 — open-source Instagram automation. MIT licensed.
+          Automation Guru — Instagram Automation
         </span>
-        <div className="flex items-center gap-5 font-mono-ui text-[11px] text-neutral-500">
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">GitHub</a>
-          <a href={TELEGRAM_URL} target="_blank" rel="noreferrer" className="hover:text-[#2AABEE] transition-colors">Telegram support</a>
-        </div>
+        <span className="font-mono-ui text-[10px] text-neutral-700 tracking-wider">
+          a product by automation group
+        </span>
       </footer>
     </div>
   )

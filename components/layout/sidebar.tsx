@@ -35,7 +35,7 @@ export function Sidebar({ className, username = "creator", onLogout, onNavigate,
         <div className="w-7 h-7 bg-[#ffe14d] text-black rounded-md flex items-center justify-center shrink-0">
           <Zap className="w-3.5 h-3.5" strokeWidth={2.5} />
         </div>
-        <span className="font-mono-ui text-sm font-bold tracking-tight text-white">insta-p8</span>
+        <span className="font-mono-ui text-sm font-bold tracking-tight text-white">Automation Guru</span>
       </div>
 
       <div className="mx-5 h-px bg-white/[0.06]" />
@@ -94,7 +94,7 @@ export function Sidebar({ className, username = "creator", onLogout, onNavigate,
       </nav>
 
       {/* Account */}
-      <div className="px-3 pb-4">
+      <div className="px-3 pb-1">
         <div className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg border border-white/[0.06] group">
           <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-500 p-[1.5px] shrink-0">
             <div className="w-full h-full rounded-full bg-black flex items-center justify-center">
@@ -113,6 +113,12 @@ export function Sidebar({ className, username = "creator", onLogout, onNavigate,
             <LogOut className="w-3.5 h-3.5" />
           </button>
         </div>
+      </div>
+      {/* Watermark */}
+      <div className="px-5 pb-4 pt-2">
+        <p className="font-mono-ui text-[9px] text-neutral-700 tracking-wider text-center">
+          a product by automation group
+        </p>
       </div>
     </aside>
   )

@@ -101,13 +101,7 @@ export function LandingPage() {
                   Dev Login
                 </button>
               )}
-              <a
-                href={TELEGRAM_URL} target="_blank" rel="noreferrer"
-                className="flex items-center gap-2 font-mono-ui text-sm text-neutral-300 border border-white/15 px-6 py-4 rounded-full hover:border-[#2AABEE]/60 hover:text-[#2AABEE] transition-colors"
-              >
-                <Send className="w-4 h-4" />
-                Telegram support
-              </a>
+              
             </div>
           </div>
         </section>
